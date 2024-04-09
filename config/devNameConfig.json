@@ -1,0 +1,31 @@
+{
+	"cgiName" : "devName",
+	"get_description":"get device name",
+	"set_description": "device name setting",
+	"get": {
+		"device_name":{
+			"type" : "string",
+			"length": 64,
+			"description":"router name",
+			"nvramName" : "system_name"
+			
+		},
+		"pre_mode":{
+			"type" : "string",
+			"length": 64,
+			"description": "current router mode", 
+			"nvramName" : "device_role"
+			
+		}
+	},
+	"set":{
+		"device_name":{
+			"type" : "string",
+			"description":"device name",
+			"length": 64,
+			"nvramName" : "system_name",
+			"default_value" : "IndoorV2-test"
+			
+		}
+	}
+}

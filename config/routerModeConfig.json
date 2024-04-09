@@ -1,0 +1,58 @@
+{
+	"cgiName" : "routerMode",
+	"get_description": "get current router mode and wan ip addres info",
+	"set_description": "set router mode",
+	"get": {
+		"device_name":{
+			"type" : "string",
+			"description": "device name len<64",
+			"length": 64,
+			"nvramName" : "system_name"
+			
+		},
+		"enable_ap_mode":{
+			"type" : "string",
+			"description": "router mode setting (AP/router)",
+			"length": 64,
+			"nvramName" : "enable_ap_mode"
+			
+		},
+		"ifconfig":{
+			"type": "object",
+			"description": "router WAN network info",
+			"item":{
+				"ipaddr":{
+					"type" : "string",
+					"length": 64,
+					"nvramName" : "wan_ipaddr"
+				},
+				"netmask":{
+					"type" : "string",
+					"length": 64,
+					"nvramName" : "wan_netmask"
+				},
+				"geteway":{
+					"type" : "string",
+					"length": 64,
+					"nvramName" : "wan_gateway"
+				},
+				"dns1_pri":{
+					"type" : "string",
+					"length": 64,
+					"nvramName" : "wan_dns1_pri"
+				}
+			}
+		}
+	},
+	"set":{
+		"router_mode":{
+			"type" : "string",
+			"description": "setting router mode setting (AP/router)",
+			"length": 64,
+			"nvramName" : "router_mode",
+			"default_value" : "router"
+			
+		}
+		
+	}
+}

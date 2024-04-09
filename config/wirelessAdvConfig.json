@@ -1,0 +1,141 @@
+{
+	"cgiName" : "wirelessAdv",
+	"get_description": "getting wireless advanced setting",
+	"set_description": "setting wireless advanced setting",
+	"get": {
+		"sku_name":{
+			"type" : "string",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "sku_name"
+			
+		},
+		"init_preamble_2g":{
+			"type" : "string",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_preamble_2g"
+		},
+		"init_preamble_5g":{
+			"type" : "string",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_preamble_5g"
+		},
+		"rts_2g":{
+			"type" : "number",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_rts_2g"
+		},
+		"rts_5g":{
+			"type" : "number",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_rts_5g"
+		},
+		"fronthaul_2g":{
+			"type" : "boolean",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_fronthaul_2g"
+		},
+		"fronthaul_5g":{
+			"type" : "boolean",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_fronthaul_5g"
+		},
+		"enable_atf":{
+			"type" : "boolean",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_atf"
+		},
+		"enable_beamforming":{
+			"type" : "boolean",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_beamforming"
+		},
+		"performance_boost":{
+			"type" : "boolean",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_performance_boost"
+		}
+	},
+	"set":{
+		"sku_name":{
+			"type" : "string",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "sku_name",
+			"default_value" : "WW"
+			
+		},
+		"init_preamble_2g":{
+			"type" : "string",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_preamble_2g",
+			"default_value" : "short"
+		},
+		"init_preamble_5g":{
+			"type" : "string",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_preamble_5g",
+			"default_value" : "long"
+		},
+		"rts_2g":{
+			"type" : "number",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_rts_2g",
+			"default_value" : "1234"
+		},
+		"rts_5g":{
+			"type" : "number",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_rts_5g",
+			"default_value" : "567"
+		},
+		"fronthaul_2g":{
+			"type" : "boolean",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_fronthaul_2g",
+			"default_value" : true
+		},
+		"fronthaul_5g":{
+			"type" : "boolean",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_fronthaul_5g",
+			"default_value" : true
+		},
+		"enable_atf":{
+			"type" : "boolean",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_atf",
+			"default_value" : false
+		},
+		"enable_beamforming":{
+			"type" : "boolean",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_beamforming",
+			"default_value" : true
+		},
+		"performance_boost":{
+			"type" : "boolean",
+			"description":"country area code",
+			"length": 64,
+			"nvramName" : "wanAdv_performance_boost",
+			"default_value" : false
+		}
+	}
+}

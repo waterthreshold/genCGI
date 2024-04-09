@@ -1,0 +1,3 @@
+{
+  "router_mode": "router"
+}

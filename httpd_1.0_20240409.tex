@@ -1,0 +1,975 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{rest-api}
+\makeindex
+
+\title{acos httpd JSON api format}
+\author{Jeff Chiang}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+In this document show the JSON API for acos httpd  use
+
+\section{Usage}
+%GETCGI
+
+%SETCGI
+\begin{apiRoute}{get}{/GetDevName.cgi}{get device name}
+	
+	\begin{routeParameter}
+	
+	\routeParamItem{device\_name}{router name}
+	\routeParamItem{pre\_mode}{current router mode}
+	\end{routeParameter}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{
+  "device_name": "IndoorV2-test",
+  "pre_mode": "wifi_router"
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+	
+\end{apiRoute}
+\begin{apiRoute}{post}{/SetDevName.cgi}{device name setting}
+	\begin{routeParameter}
+	
+	\routeParamItem{device\_name}{device name}
+	\end{routeParameter}
+	\begin{routeRequest}{application/json}
+		\begin{routeRequestBody}
+{
+  "device_name": "IndoorV2-test"
+}
+		\end{routeRequestBody}
+	\end{routeRequest}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{     
+	"result:200
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+\end{apiRoute}
+\begin{apiRoute}{get}{/GetHotspot.cgi}{get hotspot info}
+	
+	\begin{routeParameter}
+	
+	\routeParamItem{hotspot\_3gpplist}{hotspot list}
+	\routeParamItem{hotspot\_id}{hotspot id code}
+	\routeParamItem{hotspot\_ip}{hotspot ip address}
+	\routeParamItem{hotspot\_key}{hotspot password}
+	\routeParamItem{hotspot\_ssid}{wlan setting}
+	\end{routeParameter}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{
+  "hotspot_ssid": "hostpot-test",
+  "hotspot_ip": "12.34.56.78",
+  "hotspot_id": "12345678",
+  "hotspot_key": "password",
+  "hotspot_3gpplist": "Unknown"
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+	
+\end{apiRoute}
+\begin{apiRoute}{post}{/SetHotspot.cgi}{set hotspot config}
+	\begin{routeParameter}
+	
+	\routeParamItem{hotspot\_3gpplist}{hotspot key}
+	\routeParamItem{hotspot\_id}{hotspot id}
+	\routeParamItem{hotspot\_ip}{setting hotspot ip address}
+	\routeParamItem{hotspot\_key}{hotspot key}
+	\routeParamItem{hotspot\_ssid}{setting hotspot ssid}
+	\end{routeParameter}
+	\begin{routeRequest}{application/json}
+		\begin{routeRequestBody}
+{
+  "hotspot_3gpplist": "Unknown",
+  "hotspot_id": "12345678",
+  "hotspot_ip": "12.34.56.78",
+  "hotspot_key": "password",
+  "hotspot_ssid": "hostpot-test"
+}
+		\end{routeRequestBody}
+	\end{routeRequest}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{     
+	"result:200
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+\end{apiRoute}
+\begin{apiRoute}{get}{/GetHotSpotList.cgi}{null}
+	
+	\begin{routeParameter}
+	
+	\routeParamItem{count}{TBD}
+	\routeParamItem{hspot\_tbl}{TBD}
+	\end{routeParameter}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{
+  "count": 2,
+  "hspot_tbl": [
+    {
+      "id": 1,
+      "mcc": "192.168.1.2",
+      "mnc": "dev1",
+      "action": "activate"
+    },
+    {
+      "id": 2,
+      "mcc": "192.168.1.3",
+      "mnc": "dev2",
+      "action": "block"
+    }
+  ]
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+	
+\end{apiRoute}
+\begin{apiRoute}{post}{/SetHotSpotList.cgi}{null}
+	\begin{routeParameter}
+	
+	\routeParamItem{count}{TBD}
+	\routeParamItem{hspot\_tbl}{TBD}
+	\end{routeParameter}
+	\begin{routeRequest}{application/json}
+		\begin{routeRequestBody}
+{
+  "count": 2,
+  "hspot_tbl": [
+    {
+      "action": "activate",
+      "id": 1,
+      "mcc": "192.168.1.2",
+      "mnc": "dev1"
+    },
+    {
+      "action": "block",
+      "id": 2,
+      "mcc": "192.168.1.3",
+      "mnc": "dev2"
+    }
+  ]
+}
+		\end{routeRequestBody}
+	\end{routeRequest}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{     
+	"result:200
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+\end{apiRoute}
+\begin{apiRoute}{get}{/GetIpv6Mode.cgi}{get hotspot info}
+	
+	\begin{routeParameter}
+	
+	\routeParamItem{ipv6\_dns}{ipv6 mandory dns}
+	\routeParamItem{ipv6\_dns2}{ipv6 secondary dns}
+	\routeParamItem{ipv6\_eanble}{enable ipv6 or not}
+	\routeParamItem{ipv6\_id}{ipv6 id}
+	\routeParamItem{ipv6\_lanAddr}{ipv6 lan ip address}
+	\routeParamItem{ipv6\_lanMode}{ipv6 lan ip address}
+	\routeParamItem{ipv6\_type}{ipv6 type}
+	\routeParamItem{ipv6\_wanMode}{ipv6 wan (dynamic or static)}
+	\routeParamItem{ipv6\_wanipaddr}{ipv6 wan ip}
+	\end{routeParameter}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{
+  "ipv6_dns": "unknown",
+  "ipv6_dns2": "unknown",
+  "ipv6_eanble": true,
+  "ipv6_id": "unknown",
+  "ipv6_lanAddr": "unknown",
+  "ipv6_lanMode": "dynammic",
+  "ipv6_type": "disable",
+  "ipv6_wanMode": "dynammic",
+  "ipv6_wanipaddr": "unknown"
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+	
+\end{apiRoute}
+\begin{apiRoute}{post}{/SetIpv6Mode.cgi}{set hotspot config}
+	\begin{routeParameter}
+	
+	\routeParamItem{ipv6\_dns}{ipv6 mandory dns}
+	\routeParamItem{ipv6\_dns2}{ipv6 secondary dns}
+	\routeParamItem{ipv6\_eanble}{enable ipv6 or not}
+	\routeParamItem{ipv6\_id}{ipv6 id}
+	\routeParamItem{ipv6\_lanAddr}{ipv6 lan ip address}
+	\routeParamItem{ipv6\_lanMode}{ipv6 lan (dynamic or staitc)}
+	\routeParamItem{ipv6\_type}{ipv6 type}
+	\routeParamItem{ipv6\_wanMode}{ipv6 wan (dynamic or static)}
+	\routeParamItem{ipv6\_wanipaddr}{ipv6 wan ip}
+	\end{routeParameter}
+	\begin{routeRequest}{application/json}
+		\begin{routeRequestBody}
+{
+  "ipv6_dns": "unknown",
+  "ipv6_dns2": "unknown",
+  "ipv6_eanble": true,
+  "ipv6_id": "unknown",
+  "ipv6_lanAddr": "unknown",
+  "ipv6_lanMode": "dynammic",
+  "ipv6_type": "disable",
+  "ipv6_wanMode": "dynammic",
+  "ipv6_wanipaddr": "unknown"
+}
+		\end{routeRequestBody}
+	\end{routeRequest}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{     
+	"result:200
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+\end{apiRoute}
+\begin{apiRoute}{get}{/GetLanReserv.cgi}{get hotspot info}
+	
+	\begin{routeParameter}
+	
+	\routeParamItem{count}{wlan setting}
+	\routeParamItem{lan\_Reservtbl}{wlan setting}
+	\end{routeParameter}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{
+  "count": 3,
+  "lan_Reservtbl": [
+    {
+      "id": 1,
+      "ipaddr": "192.168.1.2",
+      "devname": "dev1",
+      "mac": "A1:B2:C3:D4:E5:F1",
+      "action": "block"
+    },
+    {
+      "id": 2,
+      "ipaddr": "192.168.1.3",
+      "devname": "dev3",
+      "mac": "A1:B2:C3:D4:E5:F3",
+      "action": "allow"
+    },
+    {
+      "id": 3,
+      "ipaddr": "192.168.1.4",
+      "devname": "dev4",
+      "mac": "A1:B2:C3:D4:E5:F4",
+      "action": "TBD"
+    }
+  ]
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+	
+\end{apiRoute}
+\begin{apiRoute}{post}{/SetLanReserv.cgi}{set hotspot config}
+	\begin{routeParameter}
+	
+	\routeParamItem{count}{null}
+	\routeParamItem{lan\_Reservtbl}{null}
+	\end{routeParameter}
+	\begin{routeRequest}{application/json}
+		\begin{routeRequestBody}
+{
+  "count": 3,
+  "lan_Reservtbl": [
+    {
+      "action": "block",
+      "devname": "dev1",
+      "id": 1,
+      "ipaddr": "192.168.1.2",
+      "mac": "A1:B2:C3:D4:E5:F1"
+    },
+    {
+      "action": "allow",
+      "devname": "dev3",
+      "id": 2,
+      "ipaddr": "192.168.1.3",
+      "mac": "A1:B2:C3:D4:E5:F3"
+    },
+    {
+      "action": "TBD",
+      "devname": "dev4",
+      "id": 3,
+      "ipaddr": "192.168.1.4",
+      "mac": "A1:B2:C3:D4:E5:F4"
+    }
+  ]
+}
+		\end{routeRequestBody}
+	\end{routeRequest}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{     
+	"result:200
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+\end{apiRoute}
+\begin{apiRoute}{get}{/GetPortForwarding.cgi}{show port fowarding / triggering rule setting and config}
+	
+	\begin{routeParameter}
+	
+	\routeParamItem{lan\_ip}{port forwarding translation LAN IP}
+	\routeParamItem{pf\_enable}{port forwarding function on/off}
+	\routeParamItem{pf\_table}{port forwarding rule table (id,Name,exPort,inPort,inAddr)}
+	\routeParamItem{pt\_enable}{port triggering function on / off}
+	\routeParamItem{pt\_table}{port triggering rule table (id,Name,exPort,inPort,inAddr)}
+	\end{routeParameter}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{
+  "lan_ip": "192.168.1.1",
+  "pf_enable": true,
+  "pf_table": [
+    {
+      "id": 1,
+      "Name": "tes1",
+      "exPort": 11,
+      "inPort": 111,
+      "ipAddr": "192.168.1.1"
+    },
+    {
+      "id": 2,
+      "Name": "tes2",
+      "exPort": 12,
+      "inPort": 112,
+      "ipAddr": "192.168.1.2"
+    },
+    {
+      "id": 3,
+      "Name": "tes3",
+      "exPort": 13,
+      "inPort": 113,
+      "ipAddr": "192.168.1.3"
+    },
+    {
+      "id": 4,
+      "Name": "tes4",
+      "exPort": 14,
+      "inPort": 114,
+      "ipAddr": "192.168.1.4"
+    },
+    {
+      "id": 5,
+      "Name": "tes5",
+      "exPort": 15,
+      "inPort": 115,
+      "ipAddr": "192.168.1.5"
+    }
+  ],
+  "pt_enable": true,
+  "pt_table": [
+    {
+      "id": 1,
+      "Enable": true,
+      "SName": "http",
+      "SType": "",
+      "InBound": "11",
+      "SUser": "192.168.1.1"
+    },
+    {
+      "id": 2,
+      "Enable": true,
+      "SName": "ftp",
+      "SType": "",
+      "InBound": "12",
+      "SUser": "192.168.1.2"
+    },
+    {
+      "id": 3,
+      "Enable": true,
+      "SName": "telnet",
+      "SType": "",
+      "InBound": "13",
+      "SUser": "192.168.1.3"
+    }
+  ]
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+	
+\end{apiRoute}
+\begin{apiRoute}{post}{/SetPortForwarding.cgi}{setting each port forwardding / triggering rule and setting}
+	\begin{routeParameter}
+	
+	\routeParamItem{pf\_enable}{null}
+	\routeParamItem{pf\_table}{null}
+	\routeParamItem{pt\_enable}{null}
+	\routeParamItem{pt\_table}{null}
+	\end{routeParameter}
+	\begin{routeRequest}{application/json}
+		\begin{routeRequestBody}
+{
+  "pf_enable": true,
+  "pf_table": [
+    {
+      "Name": "tes1",
+      "exPort": 11,
+      "id": 1,
+      "inPort": 111,
+      "ipAddr": "192.168.1.1"
+    },
+    {
+      "Name": "tes2",
+      "exPort": 12,
+      "id": 2,
+      "inPort": 112,
+      "ipAddr": "192.168.1.2"
+    },
+    {
+      "Name": "tes3",
+      "exPort": 13,
+      "id": 3,
+      "inPort": 113,
+      "ipAddr": "192.168.1.3"
+    },
+    {
+      "Name": "tes4",
+      "exPort": 14,
+      "id": 4,
+      "inPort": 114,
+      "ipAddr": "192.168.1.4"
+    },
+    {
+      "Name": "tes5",
+      "exPort": 15,
+      "id": 5,
+      "inPort": 115,
+      "ipAddr": "192.168.1.5"
+    }
+  ],
+  "pt_enable": true,
+  "pt_table": [
+    {
+      "Enable": true,
+      "InBound": "11",
+      "SName": "http",
+      "SUser": "192.168.1.1",
+      "Stype": 1,
+      "id": 1
+    },
+    {
+      "Enable": false,
+      "InBound": "12",
+      "SName": "ftp",
+      "SUser": "192.168.1.2",
+      "Stype": 2,
+      "id": 2
+    },
+    {
+      "Enable": true,
+      "InBound": "13",
+      "SName": "telnet",
+      "SUser": "192.168.1.3",
+      "Stype": 3,
+      "id": 3
+    }
+  ]
+}
+		\end{routeRequestBody}
+	\end{routeRequest}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{     
+	"result:200
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+\end{apiRoute}
+\begin{apiRoute}{get}{/GetRouterMode.cgi}{get current router mode and wan ip addres info}
+	
+	\begin{routeParameter}
+	
+	\routeParamItem{device\_name}{device name len<64}
+	\routeParamItem{enable\_ap\_mode}{router mode setting (AP/router)}
+	\routeParamItem{ifconfig}{router WAN network info}
+	\end{routeParameter}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{
+  "device_name": "IndoorV2-test",
+  "enable_ap_mode": "0",
+  "ifconfig": {
+    "ipaddr": "192.168.7.128",
+    "netmask": "255.255.255.0",
+    "geteway": "192.168.7.151",
+    "dns1_pri": ""
+  }
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+	
+\end{apiRoute}
+\begin{apiRoute}{post}{/SetRouterMode.cgi}{set router mode}
+	\begin{routeParameter}
+	
+	\routeParamItem{router\_mode}{setting router mode setting (AP/router)}
+	\end{routeParameter}
+	\begin{routeRequest}{application/json}
+		\begin{routeRequestBody}
+{
+  "router_mode": "router"
+}
+		\end{routeRequestBody}
+	\end{routeRequest}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{     
+	"result:200
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+\end{apiRoute}
+\begin{apiRoute}{get}{/GetUpnp.cgi}{get upnp related info and upnp portforwarding table}
+	
+	\begin{routeParameter}
+	
+	\routeParamItem{PortMapTable}{upnp port mapping table}
+	\routeParamItem{hiddenAdverTime}{upnp advertise time}
+	\routeParamItem{hiddenTimeToLive}{upnp time to live}
+	\routeParamItem{hiddenTurnUPnPOn}{enable/disable upnp}
+	\end{routeParameter}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{
+  "hiddenAdverTime": 111,
+  "hiddenTimeToLive": 123,
+  "hiddenTurnUPnPOn": true
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+	
+\end{apiRoute}
+\begin{apiRoute}{post}{/SetUpnp.cgi}{set upnp related config}
+	\begin{routeParameter}
+	
+	\routeParamItem{hiddenAdverTime}{setting upnp advertise time}
+	\routeParamItem{hiddenTimeToLive}{setting upnp time to live}
+	\routeParamItem{hiddenTurnUPnPOn}{setting upnp on / off time}
+	\end{routeParameter}
+	\begin{routeRequest}{application/json}
+		\begin{routeRequestBody}
+{
+  "hiddenAdverTime": 111,
+  "hiddenTimeToLive": 123,
+  "hiddenTurnUPnPOn": true
+}
+		\end{routeRequestBody}
+	\end{routeRequest}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{     
+	"result:200
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+\end{apiRoute}
+\begin{apiRoute}{get}{/GetVer.cgi}{Get firmeare version}
+	
+	\begin{routeParameter}
+	
+	\routeParamItem{SOFTWARE\_VERSION}{Main version}
+	\routeParamItem{UI\_VERSION}{sub version}
+	\end{routeParameter}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{
+  "SOFTWARE_VERSION": "V1.0.0.1",
+  "UI_VERSION": "1.0.1"
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+	
+\end{apiRoute}
+
+\begin{apiRoute}{get}{/GetVlanBridge.cgi}{Get vlan info}
+	
+	\begin{routeParameter}
+	
+	\routeParamItem{bridgePort}{enable/disable vlan}
+	\routeParamItem{lan\_portcount}{enable/disable vlan}
+	\routeParamItem{vlan\_enable}{enable/disable vlan}
+	\routeParamItem{vlan\_group}{enable/disable vlan}
+	\routeParamItem{vlan\_mode}{enable/disable vlan}
+	\routeParamItem{wirebandCount}{enable/disable vlan}
+	\end{routeParameter}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{
+  "bridgePort": [
+    {
+      "id": 0,
+      "type": "",
+      "Enable": false
+    },
+    {
+      "id": 0,
+      "type": "",
+      "Enable": false
+    },
+    {
+      "id": 0,
+      "type": "",
+      "Enable": false
+    },
+    {
+      "id": 0,
+      "type": "",
+      "Enable": false
+    },
+    {
+      "id": 0,
+      "type": "",
+      "Enable": false
+    }
+  ],
+  "lan_portcount": 4,
+  "vlan_enable": true,
+  "vlan_group": [
+    {
+      "Enable": true,
+      "Name": "vlan_10",
+      "vlan_id": 0,
+      "Priority": 0,
+      "wieredPort": "1,2",
+      "wierelessBnad": "",
+      "action": "active"
+    },
+    {
+      "Enable": true,
+      "Name": "vlan_100",
+      "vlan_id": 0,
+      "Priority": 0,
+      "wieredPort": "3,4",
+      "wierelessBnad": "",
+      "action": "active"
+    }
+  ],
+  "vlan_mode": "bridge",
+  "wirebandCount": 2
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+	
+\end{apiRoute}
+\begin{apiRoute}{post}{/SetVlanBridge.cgi}{Set vlan config}
+	\begin{routeParameter}
+	
+	\routeParamItem{bridgePort}{enable/disable vlan}
+	\routeParamItem{lan\_portcount}{enable/disable vlan}
+	\routeParamItem{vlan\_enable}{enable/disable vlan}
+	\routeParamItem{vlan\_group}{enable/disable vlan}
+	\routeParamItem{vlan\_mode}{enable/disable vlan}
+	\routeParamItem{wirebandCount}{enable/disable vlan}
+	\end{routeParameter}
+	\begin{routeRequest}{application/json}
+		\begin{routeRequestBody}
+{
+  "bridgePort": [
+    {
+      "Enable": true,
+      "id": 1,
+      "type": "wired"
+    },
+    {
+      "Enable": false,
+      "id": 2,
+      "type": "wired"
+    },
+    {
+      "Enable": true,
+      "id": 3,
+      "type": "wired"
+    },
+    {
+      "Enable": true,
+      "id": 1,
+      "type": "wireless"
+    },
+    {
+      "Enable": true,
+      "id": 2,
+      "type": "wireless"
+    }
+  ],
+  "lan_portcount": 4,
+  "vlan_enable": true,
+  "vlan_group": [
+    {
+      "Enable": true,
+      "Name": "vlan_10",
+      "Priority": 8,
+      "action": "active",
+      "vlan_id": 10,
+      "wieredPort": "1,2",
+      "wierelessBnad": "1"
+    },
+    {
+      "Enable": true,
+      "Name": "vlan_100",
+      "Priority": 7,
+      "action": "active",
+      "vlan_id": 100,
+      "wieredPort": "3,4",
+      "wierelessBnad": "2"
+    }
+  ],
+  "vlan_mode": "bridge",
+  "wirebandCount": 2
+}
+		\end{routeRequestBody}
+	\end{routeRequest}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{     
+	"result:200
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+\end{apiRoute}
+\begin{apiRoute}{get}{/GetWanAdv.cgi}{get WAN / firewall advance setting}
+	
+	\begin{routeParameter}
+	
+	\routeParamItem{NatInboundFiltering}{setting dmz enable /disable}
+	\routeParamItem{disable\_igmp}{setting dmz enable /disable}
+	\routeParamItem{disable\_sip}{setting dmz enable /disable}
+	\routeParamItem{dmz\_enable}{setting dmz enable /disable}
+	\routeParamItem{dmz\_ipaddr}{setting dmz enable /disable}
+	\routeParamItem{response\_ping}{setting dmz enable /disable}
+	\routeParamItem{wan\_mtu}{setting dmz enable /disable}
+	\end{routeParameter}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{
+  "dmz_enable": "Enable",
+  "dmz_ipaddr": "192.168.1.0",
+  "response_ping": "Disable",
+  "disable_sip": "fw_sip_enab",
+  "NatInboundFiltering": "Disable",
+  "disable_igmp": "Disable",
+  "wan_mtu": "1450"
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+	
+\end{apiRoute}
+\begin{apiRoute}{post}{/SetWanAdv.cgi}{set WAN / firewall advance setting}
+	\begin{routeParameter}
+	
+	\routeParamItem{NatInboundFiltering}{setting dmz enable /disable}
+	\routeParamItem{disable\_igmp}{setting dmz enable /disable}
+	\routeParamItem{disable\_sip}{setting dmz enable /disable}
+	\routeParamItem{dmz\_enable}{setting dmz enable /disable}
+	\routeParamItem{dmz\_ipaddr}{setting dmz enable /disable}
+	\routeParamItem{response\_ping}{setting dmz enable /disable}
+	\routeParamItem{wan\_mtu}{setting dmz enable /disable}
+	\end{routeParameter}
+	\begin{routeRequest}{application/json}
+		\begin{routeRequestBody}
+{
+  "NatInboundFiltering": "Disable",
+  "disable_igmp": "Disable",
+  "disable_sip": "fw_sip_enab",
+  "dmz_enable": "Enable",
+  "dmz_ipaddr": "192.168.1.0",
+  "response_ping": "Disable",
+  "wan_mtu": "1450"
+}
+		\end{routeRequestBody}
+	\end{routeRequest}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{     
+	"result:200
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+\end{apiRoute}
+\begin{apiRoute}{get}{/GetWifiManagement.cgi}{Get clould wifi management info}
+	
+	\begin{routeParameter}
+	
+	\routeParamItem{enable\_payment}{host IP address or resolve name}
+	\routeParamItem{mqtt\_host}{host IP address or resolve name}
+	\routeParamItem{mqtt\_password}{host IP address or resolve name}
+	\routeParamItem{mqtt\_status}{host IP address or resolve name}
+	\routeParamItem{mqtt\_status\_msg}{host IP address or resolve name}
+	\routeParamItem{mqtt\_username}{host IP address or resolve name}
+	\end{routeParameter}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{
+  "mqtt_host": "12.34.56.78",
+  "mqtt_username": "mqttHost",
+  "mqtt_password": "mqttPassword",
+  "mqtt_status": 0,
+  "mqtt_status_msg": "Disconnected",
+  "enable_payment": ""
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+	
+\end{apiRoute}
+\begin{apiRoute}{post}{/SetWifiManagement.cgi}{Set clould wifi management info}
+	\begin{routeParameter}
+	
+	\routeParamItem{mqtt\_host}{host IP address or resolve name}
+	\routeParamItem{mqtt\_password}{host IP address or resolve name}
+	\routeParamItem{mqtt\_username}{host IP address or resolve name}
+	\end{routeParameter}
+	\begin{routeRequest}{application/json}
+		\begin{routeRequestBody}
+{
+  "mqtt_host": "12.34.56.78",
+  "mqtt_password": "mqttPassword",
+  "mqtt_username": "mqttHost"
+}
+		\end{routeRequestBody}
+	\end{routeRequest}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{     
+	"result:200
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+\end{apiRoute}
+\begin{apiRoute}{get}{/GetWirelessAdv.cgi}{getting wireless advanced setting}
+	
+	\begin{routeParameter}
+	
+	\routeParamItem{enable\_atf}{country area code}
+	\routeParamItem{enable\_beamforming}{country area code}
+	\routeParamItem{fronthaul\_2g}{country area code}
+	\routeParamItem{fronthaul\_5g}{country area code}
+	\routeParamItem{init\_preamble\_2g}{country area code}
+	\routeParamItem{init\_preamble\_5g}{country area code}
+	\routeParamItem{performance\_boost}{country area code}
+	\routeParamItem{rts\_2g}{country area code}
+	\routeParamItem{rts\_5g}{country area code}
+	\routeParamItem{sku\_name}{country area code}
+	\end{routeParameter}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{
+  "enable_atf": false,
+  "enable_beamforming": true,
+  "fronthaul_2g": true,
+  "fronthaul_5g": true,
+  "init_preamble_2g": "short",
+  "init_preamble_5g": "long",
+  "performance_boost": false,
+  "rts_2g": 1234,
+  "rts_5g": 567,
+  "sku_name": ""
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+	
+\end{apiRoute}
+\begin{apiRoute}{post}{/SetWirelessAdv.cgi}{setting wireless advanced setting}
+	\begin{routeParameter}
+	
+	\routeParamItem{enable\_atf}{country area code}
+	\routeParamItem{enable\_beamforming}{country area code}
+	\routeParamItem{fronthaul\_2g}{country area code}
+	\routeParamItem{fronthaul\_5g}{country area code}
+	\routeParamItem{init\_preamble\_2g}{country area code}
+	\routeParamItem{init\_preamble\_5g}{country area code}
+	\routeParamItem{performance\_boost}{country area code}
+	\routeParamItem{rts\_2g}{country area code}
+	\routeParamItem{rts\_5g}{country area code}
+	\routeParamItem{sku\_name}{country area code}
+	\end{routeParameter}
+	\begin{routeRequest}{application/json}
+		\begin{routeRequestBody}
+{
+  "enable_atf": false,
+  "enable_beamforming": true,
+  "fronthaul_2g": true,
+  "fronthaul_5g": true,
+  "init_preamble_2g": "short",
+  "init_preamble_5g": "long",
+  "performance_boost": false,
+  "rts_2g": 1234,
+  "rts_5g": 567,
+  "sku_name": "WW"
+}
+		\end{routeRequestBody}
+	\end{routeRequest}
+	\begin{routeResponse}{application/json}
+		\begin{routeResponseItem}{200}{ok}
+			\begin{routeResponseItemBody}
+{     
+	"result:200
+}
+			\end{routeResponseItemBody}
+		\end{routeResponseItem}
+	\end{routeResponse}
+\end{apiRoute}
+\end{document}

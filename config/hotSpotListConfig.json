@@ -1,0 +1,96 @@
+{
+	"cgiName" : "hotSpotList",
+	"get": {
+		"count":{
+			"type" : "number",
+			"description": "TBD",
+			"nvramName" : "hspot_cnt"
+			
+		},
+		"hspot_tbl":{
+			"type" : "array",
+			"description": "TBD",
+			"nvram_prefix" : "hspot_tbl",
+			"length": 10,
+			"item": [
+				{
+					"name":"id",
+					"type": "number",
+					"nvramName": "hspot_tbl_id"
+				},
+				{
+					"name":"mcc",
+					"type": "string",
+					"nvramName": "hspot_tbl_mcc"
+					
+				},
+				{
+					"name": "mnc",
+					"type": "string",
+					"nvramName": "hspot_tbl_mnc"
+				},
+				{
+					"name": "action",
+					"type": "string",
+					"nvramName": "hspot_tbl_action"
+				}
+			
+			
+		]
+		}
+	},
+	"set":{
+		"count":{
+			"type" : "number",
+			"nvramName" : "hspot_cnt",
+			"description": "TBD",
+			"default_value" : 2	
+		},
+		"hspot_tbl":{
+			"type" : "array",
+			"nvram_prefix" : "hspot_tbl",
+			"description": "TBD",
+			"length": 10,
+			"item": [
+				{
+					"name":"id",
+					"type": "number",
+					"nvramName": "hspot_tbl_id"
+				},
+				{
+					"name":"mcc",
+					"type": "string",
+					"nvramName": "hspot_tbl_mcc"
+					
+				},
+				{
+					"name": "mnc",
+					"type": "string",
+					"nvramName": "hspot_tbl_mnc"
+				},
+				{
+					"name": "action",
+					"type": "string",
+					"nvramName": "hspot_tbl_action"
+				}
+			],
+			"default_value": [
+				{	
+					"id": 1,
+					"mcc":"192.168.1.2",
+					"mnc":"dev1",
+					"action": "activate"
+				},
+				{	
+					"id": 2,
+					"mcc":"192.168.1.3",
+					"mnc":"dev2",
+					"action": "block"
+				}
+				
+				
+			]
+			
+		}
+	}
+}

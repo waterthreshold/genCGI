@@ -1,0 +1,20 @@
+{
+	"cgiName" : "ver",
+	"get_description" : "Get firmeare version",
+	"get": {
+		"SOFTWARE_VERSION":{
+			"type" : "string",
+			"description" : "Main version",
+			"length": 64,
+			"nvramName" : "system_name"
+			
+		},
+		"UI_VERSION":{
+			"type" : "string",
+			"description" : "sub version",
+			"length": 64,
+			"nvramName" : "device_role"
+			
+		}
+	}
+}

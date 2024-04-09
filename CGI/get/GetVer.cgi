@@ -1,0 +1,4 @@
+{
+  "SOFTWARE_VERSION": "V1.0.0.1",
+  "UI_VERSION": "1.0.1"
+}

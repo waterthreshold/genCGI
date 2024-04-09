@@ -1,0 +1,117 @@
+{
+	"cgiName" : "ipv6Mode",
+	"get_description":"get hotspot info",
+	"set_description":"set hotspot config",
+	"get": {
+		"ipv6_eanble":{
+			"type" : "boolean",
+			"description":"enable ipv6 or not",
+			"nvramName" : "ipv6_eanble"	
+		},
+		"ipv6_type":{
+			"type" : "string",
+			"description":"ipv6 type",
+			"nvramName" : "ipv6_type"	
+		},
+		"ipv6_wanipaddr":{
+			"type" : "string",
+			"description":"ipv6 wan ip",
+			"nvramName" : "ipv6_wanipaddr"	
+		},
+		"ipv6_wanMode":{
+			"type" : "string",
+			"description":"ipv6 wan (dynamic or static)",
+			"nvramName" : "ipv6_wanMode"	
+		},
+		"ipv6_dns":{
+			"type" : "string",
+			"description":"ipv6 mandory dns",
+			"nvramName" : "ipv6_dns"	
+		},
+		"ipv6_dns2":{
+			"type" : "string",
+			"description":"ipv6 secondary dns",
+			"nvramName" : "ipv6_dns2"	
+		},
+		"ipv6_lanAddr": {
+			"type" : "string",
+			"description":"ipv6 lan ip address",
+			"nvramName" : "ipv6_lanAddr"	
+		},
+		"ipv6_lanMode": {
+			"type" : "string",
+			"description":"ipv6 lan ip address",
+			"nvramName" : "ipv6_lanMode"	
+		},
+		"ipv6_id": {
+			"type" : "string",
+			"description":"ipv6 id",
+			"nvramName" : "ipv6_id"	
+		}
+		
+	},
+	"set":{
+		"ipv6_eanble":{
+			"type" : "boolean",
+			"description":"enable ipv6 or not",
+			"default_value" : true,
+			"nvramName" : "ipv6_eanble"	
+		},
+		"ipv6_type":{
+			"type" : "string",
+			"description":"ipv6 type",
+			"length":64,
+			"default_value" : "disable",
+			"nvramName" : "ipv6_type"	
+		},
+		"ipv6_wanipaddr":{
+			"type" : "string",
+			"description":"ipv6 wan ip",
+			"length":64,
+			"default_value" : "unknown",
+			"nvramName" : "ipv6_wanipaddr"	
+		},
+		"ipv6_wanMode":{
+			"type" : "string",
+			"description":"ipv6 wan (dynamic or static)",
+			"length":64,
+			"default_value" : "dynammic",
+			"nvramName" : "ipv6_wanMode"	
+		},
+		"ipv6_dns":{
+			"type" : "string",
+			"description":"ipv6 mandory dns",
+			"length":64,
+			"default_value" : "unknown",
+			"nvramName" : "ipv6_dns"	
+		},
+		"ipv6_dns2":{
+			"type" : "string",
+			"description":"ipv6 secondary dns",
+			"length":64,
+			"default_value" : "unknown",
+			"nvramName" : "ipv6_dns2"	
+		},
+		"ipv6_lanAddr": {
+			"type" : "string",
+			"description":"ipv6 lan ip address",
+			"length":64,
+			"default_value" : "unknown",
+			"nvramName" : "ipv6_lanAddr"	
+		},
+		"ipv6_lanMode": {
+			"type" : "string",
+			"description":"ipv6 lan (dynamic or staitc)",
+			"length":64,
+			"default_value" : "dynammic",
+			"nvramName" : "ipv6_lanMode"	
+		},
+		"ipv6_id": {
+			"type" : "string",
+			"description":"ipv6 id",
+			"length":64,
+			"default_value" : "unknown",
+			"nvramName" : "ipv6_id"	
+		}
+	}
+}

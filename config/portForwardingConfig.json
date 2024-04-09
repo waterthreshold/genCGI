@@ -1,0 +1,288 @@
+{
+	"cgiName" : "portForwarding",
+	"get_description": "show port fowarding / triggering rule setting and config",
+	"set_description": "setting each port forwardding / triggering rule and setting",
+	"get": {
+		"pf_enable":{
+			"type" : "boolean",
+			"description": "port forwarding function on/off",
+			"nvramName" : "pf_enable"	
+		},
+		"lan_ip":{
+			"type" : "string",
+			"description": "port forwarding translation LAN IP",
+			"nvramName" : "lan_ipaddr"	
+		},
+		"pt_enable":{
+			"type" : "boolean",
+			"description": "port triggering function on / off",
+			"nvramName" : "pt_enable"
+		},
+		"pf_table":{
+			"type" : "array",
+			"description": "port forwarding rule table (id,Name,exPort,inPort,inAddr)",
+			"nvram_prefix" : "pf_table",
+			"length": 16,
+			"item" : [
+				{
+					"name": "id",
+					"type": "number"
+					
+				},
+				{
+					"name": "Name",
+					"type": "string",
+					"length" : 64
+				},
+				{
+					"name": "exPort",
+					"type": "number"
+					
+				},
+				{
+					"name": "inPort",
+					"type": "number"
+				
+				},{
+					"name": "ipAddr",
+					"length": 64,
+					"type": "string"
+					
+				}
+			]
+		},
+		"pt_table":{
+			"type" : "array",
+			"nvram_prefix" : "pf_table",
+			"length": 16,
+			"item" : [
+				{
+					"name": "id",
+					"type": "number"
+					
+				},
+				{
+					"name": "Name",
+					"type": "string",
+					"length" : 64
+				},
+				{
+					"name": "exPort",
+					"type": "number"
+					
+				},
+				{
+					"name": "inPort",
+					"type": "number"
+				
+				},{
+					"name": "ipAddr",
+					"length": 64,
+					"type": "string"
+					
+				}
+			]
+		},
+		"pt_table":{
+			"type" : "array",
+			"description": "port triggering rule table (id,Name,exPort,inPort,inAddr)",
+			"nvram_prefix" : "pt_table",
+			"length": 16,
+			"item" : [
+				{
+					"name": "id",
+					"type": "number"
+				},
+				{
+					"name": "Enable",
+					"type": "boolean"
+					
+				},
+				{
+					"name": "SName",
+					"type": "string",
+					"length" : 64
+				},
+				{
+					"name": "SType",
+					"length": 64,
+					"type": "string"
+					
+				},
+				{
+					"name": "InBound",
+					"length": 64,
+					"type": "string"
+				
+				},{
+					"name": "SUser",
+					"length": 64,
+					"type": "string"
+					
+				}
+			]
+		}
+	},
+	"set":{
+		"pf_enable":{
+			"type" : "boolean",
+			"nvramName" : "pf_enable",
+			"default_value" : true	
+		},
+		"pt_enable":{
+			"type" : "boolean",
+			"nvramName" : "pt_enable",
+			"default_value" : true	
+		},
+		"pf_table":{
+			"type" : "array",
+			"nvram_prefix" : "pf_table",
+			"length": 16,
+			"item" : [
+				{
+					"name": "id",
+					"type": "number",
+					"nvramName": "pf_table_id"
+					
+				},
+				{
+					"name": "Name",
+					"type": "string",
+					"length" : 64,
+					"nvramName": "pf_table_Name"
+				},
+				{
+					"name": "exPort",
+					"type": "number",
+					"nvramName": "pf_table_exPort"
+					
+				},
+				{
+					"name": "inPort",
+					"type": "number",
+					"nvramName": "pf_table_inPort"
+				
+				},{
+					"name": "ipAddr",
+					"length": 64,
+					"type": "string",
+					"nvramName": "pf_table_ipAddr"
+					
+				}
+			],
+			"default_value": [
+				{
+					"id": 1,
+					"Name": "tes1",
+					"exPort": 11,
+					"inPort": 111,
+					"ipAddr": "192.168.1.1"
+			
+				},
+				{
+					"id": 2,
+					"Name": "tes2",
+					"exPort": 12,
+					"inPort": 112,
+					"ipAddr": "192.168.1.2"
+			
+				},
+				{
+					"id": 3,
+					"Name": "tes3",
+					"exPort": 13,
+					"inPort": 113,
+					"ipAddr": "192.168.1.3"
+			
+				},
+				{
+					"id": 4,
+					"Name": "tes4",
+					"exPort": 14,
+					"inPort": 114,
+					"ipAddr": "192.168.1.4"
+			
+				},
+				{
+					"id": 5,
+					"Name": "tes5",
+					"exPort": 15,
+					"inPort": 115,
+					"ipAddr": "192.168.1.5"
+			
+				}
+				
+			]
+		},
+		"pt_table" :{
+			"type" : "array",
+			"nvram_prefix" : "pt_table",
+			"length": 16,
+			"item" : [
+				{
+					"name": "id",
+					"type": "number",
+					"nvramName": "pt_table_id"
+				},
+				{
+					"name": "Enable",
+					"type": "boolean",
+					"nvramName": "pt_table_Enable"
+					
+				},
+				{
+					"name": "SName",
+					"type": "string",
+					"length" : 64,
+					"nvramName": "pt_table_SName"
+				},
+				{
+					"name": "SType",
+					"length": 64,
+					"type": "string",
+					"nvramName": "pt_table_SType"
+					
+				},
+				{
+					"name": "InBound",
+					"length": 64,
+					"type": "string",
+					"nvramName": "pt_table_InBound"
+				
+				},{
+					"name": "SUser",
+					"length": 64,
+					"type": "string",
+					"nvramName": "pt_table_SUser"
+					
+				}
+			],
+			"default_value": [
+				{
+					"id":1,
+					"Enable" :true,
+					"SName": "http",
+					"Stype": "1",
+					"InBound" :"11",
+					"SUser" :"192.168.1.1"
+				},
+				{
+					"id":2,
+					"Enable" :false,
+					"SName": "ftp",
+					"Stype": "2",
+					"InBound" :"12",
+					"SUser" :"192.168.1.2"
+				},
+				{
+					"id":3,
+					"Enable" :true,
+					"SName": "telnet",
+					"Stype": "3",
+					"InBound" :"13",
+					"SUser" :"192.168.1.3"
+				}
+			]
+		}
+	}
+}

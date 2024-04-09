@@ -1,0 +1,109 @@
+{
+	"cgiName" : "wanAdv",
+	"get_description": "get WAN / firewall advance setting",
+	"set_description": "set WAN / firewall advance setting",
+	"get": {
+		"dmz_enable":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "fw_dmz_enab"
+			
+		},
+		"dmz_ipaddr":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "dmz_ipaddr"
+			
+		},
+		"response_ping":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "fw_rsp_ping"
+		},
+		"disable_sip":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "fw_sip_enab"
+		},
+		"NatInboundFiltering":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "nat_inbound_filtering"
+		},
+		"disable_igmp":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "igmp_proxying_enable"
+		},
+		"wan_mtu":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "wan_mtu"
+		}
+	},
+	"set":{
+		"dmz_enable":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "fw_dmz_enab",
+			"default_value" : "Enable"
+			
+		},
+		"dmz_ipaddr":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "dmz_ipaddr",
+			"default_value" : "192.168.1.0"
+			
+		},
+		"response_ping":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "fw_rsp_ping",
+			"default_value" : "Disable"
+			
+		},
+		"disable_sip":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "fw_dmz_enab",
+			"default_value" : "fw_sip_enab"
+			
+		},
+		"NatInboundFiltering":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "nat_inbound_filtering",
+			"default_value" : "Disable"
+			
+		},
+		"disable_igmp":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "igmp_proxying_enable",
+			"default_value" : "Disable"
+			
+		},
+		"wan_mtu":{
+			"type" : "string",
+			"description":"setting dmz enable /disable",
+			"length": 64,
+			"nvramName" : "wan_mtu",
+			"default_value" : "1450"
+			
+		}
+	}
+}

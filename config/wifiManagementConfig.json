@@ -1,0 +1,74 @@
+{
+	"cgiName" : "wifiManagement",
+	"get_description": "Get clould wifi management info",
+	"set_description": "Set clould wifi management info",
+	"get": {
+		"mqtt_host":{
+			"type" : "string",
+			"description": "host IP address or resolve name",
+			"length": 64,
+			"nvramName" : "wmcd_host"
+			
+		},
+		"mqtt_username":{
+			"type" : "string",
+			"description": "host IP address or resolve name",
+			"length": 64,
+			"nvramName" : "wmcd_username"
+			
+		},
+		"mqtt_password":{
+			"type" : "string",
+			"description": "host IP address or resolve name",
+			"length": 64,
+			"nvramName" : "wmcd_password"
+			
+		},
+		"mqtt_status":{
+			"type" : "Number",
+			"description": "host IP address or resolve name",
+			"length": 64,
+			"nvramName" : "status"
+			
+		},
+		"mqtt_status_msg":{
+			"type" : "string",
+			"description": "host IP address or resolve name",
+			"length": 64,
+			"nvramName" : "wmcd_status"
+			
+		},
+		"enable_payment":{
+			"type" : "Number",
+			"description": "host IP address or resolve name",
+			"length": 64,
+			"nvramName" : "enable_payment"
+			
+		}
+	},
+	"set":{
+		"mqtt_host":{
+			"type" : "string",
+			"description": "host IP address or resolve name",
+			"length": 64,
+			"nvramName" : "wmcd_host",
+			"default_value" : "12.34.56.78"
+			
+		},
+		"mqtt_username":{
+			"type" : "string",
+			"description": "host IP address or resolve name",
+			"length": 64,
+			"nvramName" : "wmcd_username",
+			"default_value" : "mqttHost"
+			
+		},
+		"mqtt_password":{
+			"type" : "string",
+			"description": "host IP address or resolve name",
+			"length": 64,
+			"nvramName" : "wmcd_password",
+			"default_value" : "mqttPassword"
+		}
+	}
+}

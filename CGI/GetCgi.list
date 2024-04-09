@@ -1,0 +1,13 @@
+GetDevName.cgi
+GetHotspot.cgi
+GetPortForwarding.cgi
+GetRouterMode.cgi
+GetUpnp.cgi
+GetVer.cgi
+GetVlanBridge.cgi
+GetWanAdv.cgi
+GetWifiManagement.cgi
+GetWirelessAdv.cgi
+GetIpv6Mode.cgi
+GetLanReserv.cgi
+GetHotSpotList.cgi

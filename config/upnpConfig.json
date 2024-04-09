@@ -1,0 +1,81 @@
+{
+	"cgiName" : "upnp",
+	"get_description":"get upnp related info and upnp portforwarding table",
+	"set_description":"set upnp related config",
+	"get":{
+		"hiddenTurnUPnPOn":{
+			"type" : "boolean",
+			"description":"enable/disable upnp",
+			"length": 64,
+			"nvramName" : "hiddenTurnUPnPOn"
+		},
+		"hiddenAdverTime":{
+			"type" : "number",
+			"description":"upnp advertise time",
+			"length": 64,
+			"nvramName" : "hiddenAdverTime"		
+		},
+		"hiddenTimeToLive":{
+			"type" : "number",
+			"description":"upnp time to live",
+			"length": 64,
+			"nvramName" : "hiddenTimeToLive"
+		},
+		"PortMapTable":{
+			"type": "array",
+			"description":"upnp port mapping table",
+			"nvram_prefix": "PortMapTable",
+			"length":32,
+			"item": {
+				"enable":{
+					"name":"enable",
+					"type": "boolean"
+					
+				},
+				"ipAddr":{
+					"name":"ipAddr",
+					"type": "string"
+					
+				},
+				"inPort":{
+					"name":"inPort",
+					"type": "number"
+					
+				},
+				"OutPort":{
+					"name":"OutPort",
+					"type": "number"
+					
+				},
+				"proto":{
+					"name":"proto",
+					"type": "string"
+					
+				}
+			}
+		}
+	},
+	"set":{
+		"hiddenTurnUPnPOn":{
+			"type" : "boolean",
+			"description":"setting upnp on / off time",
+			"length": 64,
+			"nvramName" : "hiddenTurnUPnPOn",
+			"default_value" : true		
+		},
+		"hiddenAdverTime":{
+			"type" : "number",
+			"description":"setting upnp advertise time",
+			"length": 64,
+			"nvramName" : "hiddenAdverTime",
+			"default_value" : 111		
+		},
+		"hiddenTimeToLive":{
+			"type" : "number",
+			"description":"setting upnp time to live",
+			"length": 64,
+			"nvramName" : "hiddenTimeToLive",
+			"default_value" : 123 	
+		}
+	}
+}

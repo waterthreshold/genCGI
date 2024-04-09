@@ -1,0 +1,234 @@
+{
+	"cgiName" : "vlanBridge",
+	"get_description": "Get vlan info",
+	"set_description": "Set vlan config",
+	"get": {
+		"vlan_enable":{
+			"type" : "boolean",
+			"description":"enable/disable vlan",
+			"nvramName" : "vlan_enable"	
+		},
+		"vlan_mode":{
+			"type" : "string",
+			"description":"enable/disable vlan",
+			"nvramName" : "vlan_mode"	
+		},
+		"lan_portcount":{
+			"type" : "number",
+			"description":"enable/disable vlan",
+			"nvramName" : "lan_portcount"	
+		},
+		"wirebandCount":{
+			"type" : "number",
+			"description":"enable/disable vlan",
+			"nvramName" : "wirebandCount"
+		},
+		"bridgePort":{
+			"type" : "array",
+			"description":"enable/disable vlan",
+			"nvram_prefix" : "bridgePort",
+			"length": 5,
+			"item" :[
+				{
+					"name":"id",
+					"type": "number"
+				},
+				{
+					"name":"type",
+					"type": "string"
+					
+				},
+				{
+					"name": "Enable",
+					"type": "boolean"
+				}
+			]
+		},
+		"vlan_group": {
+			"type":"array",
+			"description":"enable/disable vlan",
+			"nvram_prefix" : "vlan_group",
+			"length": 5,
+			"item": [
+				{
+					"name":"Enable",
+					"type": "boolean"
+				},
+				{
+					"name":"Name",
+					"length": 64,
+					"type": "string"
+				},
+				{
+					"name":"vlan_id",
+					"type": "number"
+				},
+				{
+					"name":"Priority",
+					"type": "number"
+				},
+				{
+					"name":"wieredPort",
+					"length": 64,
+					"type": "string"
+				},
+				{
+					"name":"wierelessBnad",
+					"length": 64,
+					"type": "string"
+				},
+				{
+					"name":"action",
+					"length": 64,
+					"type": "string"
+				}
+			]	
+		}
+		
+	},
+	"set":{
+		"vlan_enable":{
+			"type" : "boolean",
+			"description":"enable/disable vlan",
+			"nvramName" : "vlan_enable"	,
+			"default_value" : true	
+		},
+		"vlan_mode":{
+			"type" : "string",
+			"description":"enable/disable vlan",
+			"nvramName" : "vlan_mode",
+			"default_value" : "bridge"		
+		},
+		"lan_portcount":{
+			"type" : "number",
+			"description":"enable/disable vlan",
+			"nvramName" : "lan_portcount",
+			"default_value" : 4	
+		},
+		"wirebandCount":{
+			"type" : "number",
+			"description":"enable/disable vlan",
+			"nvramName" : "wirebandCount",
+			"default_value" : 2
+		},
+		"bridgePort":{
+			"type" : "array",
+			"description":"enable/disable vlan",
+			"nvram_prefix" : "bridgePort",
+			"length": 5,
+			"item" :[
+				{
+					"name":"id",
+					"type": "number",
+					"nvramName": "bridge_id"
+				},
+				{
+					"name":"type",
+					"type": "string",
+					"nvramName": "bridge_type"
+					
+				},
+				{
+					"name": "Enable",
+					"type": "boolean",
+					"nvramName": "bridge_enable"
+				}
+			],
+			"default_value": [
+				{	
+					"id": 1,
+					"type":"wired",
+					"Enable":true
+				},
+				{	
+					"id": 2,
+					"type":"wired",
+					"Enable":false
+				},
+				{	
+					"id": 3,
+					"type":"wired",
+					"Enable":true
+				},
+				{	
+					"id": 1,
+					"type":"wireless",
+					"Enable":true
+				},{	
+					"id": 2,
+					"type":"wireless",
+					"Enable":true
+				}
+				
+			]
+			
+		},
+		"vlan_group": {
+			"type":"array",
+			"description":"enable/disable vlan",
+			"nvram_prefix" : "vlan_group",
+			"length": 5,
+			"item": [
+				{
+					"name":"Enable",
+					"type": "boolean",
+					"nvramName": "vlan_group_Enable"
+				},
+				{
+					"name":"Name",
+					"length": 64,
+					"type": "string",
+					"nvramName": "vlan_group_Name"
+				},
+				{
+					"name":"vlan_id",
+					"type": "number",
+					"nvramName": "vlan_group_id"
+				},
+				{
+					"name":"Priority",
+					"type": "number",
+					"nvramName": "vlan_group_Pri"
+				},
+				{
+					"name":"wieredPort",
+					"length": 64,
+					"type": "string",
+					"nvramName": "vlan_group_wieredPort"
+				},
+				{
+					"name":"wierelessBnad",
+					"length": 64,
+					"type": "string",
+					"nvramName": "vlan_group_wireless"
+				},
+				{
+					"name":"action",
+					"length": 64,
+					"type": "string",
+					"nvramName": "vlan_group_action"
+				}
+			],
+			"default_value": [
+				{
+					"Enable" : true,
+					"Name" : "vlan_10",
+					"vlan_id" :10,
+					"Priority": 8,
+					"wieredPort" :"1,2",
+					"wierelessBnad": "1",
+					"action" : "active"
+				},
+				{
+					"Enable" : true,
+					"Name" : "vlan_100",
+					"vlan_id" :100,
+					"Priority": 7,
+					"wieredPort" :"3,4",
+					"wierelessBnad": "2",
+					"action" : "active"
+				}
+			]
+		}
+	}
+}

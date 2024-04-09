@@ -1,0 +1,84 @@
+{
+	"cgiName" : "hotspot",
+	"get_description":"get hotspot info",
+	"set_description":"set hotspot config",
+	"get": {
+		"hotspot_ssid":{
+			"type" : "string",
+			"description": "wlan setting",
+			"length": 64,
+			"nvramName" : "wla_ssid"
+			
+		},
+		"hotspot_ip":{
+			"type" : "string",
+			"description": "hotspot ip address",
+			"length": 64,
+			"nvramName" : "radius_ip"
+			
+		},
+		"hotspot_id":{
+			"type" : "string",
+			"description": "hotspot id code",
+			"length": 64,
+			"nvramName" : "radius_nas_id_prefix"
+			
+		},
+		"hotspot_key":{
+			"type" : "string",
+			"description": "hotspot password",
+			"length": 64,
+			"nvramName" : "radius_secret_key"
+			
+		},
+		"hotspot_3gpplist":{
+			"type" : "string",
+			"description": "hotspot list",
+			"length": 64,
+			"nvramName" : "hotspot_3gpplist"
+			
+		}
+	},
+	"set":{
+		"hotspot_ssid":{
+			"type" : "string",
+			"description": "setting hotspot ssid",
+			"length": 64,
+			"default_value" : "hostpot-test",
+			"nvramName" : "wla_ssid"
+			
+		},
+		"hotspot_ip":{
+			"type" : "string",
+			"description": "setting hotspot ip address",
+			"length": 64,
+			"default_value" : "12.34.56.78",
+			"nvramName" : "radius_ip"
+			
+		},
+		"hotspot_id":{
+			"type" : "string",
+			"description": "hotspot id",
+			"length": 64,
+			"default_value" : "12345678",
+			"nvramName" : "radius_nas_id_prefix"
+			
+		},
+		"hotspot_key":{
+			"type" : "string",
+			"description": "hotspot key",
+			"length": 64,
+			"default_value" : "password",
+			"nvramName" : "radius_secret_key"
+			
+		},
+		"hotspot_3gpplist":{
+			"type" : "string",
+			"description": "hotspot key",
+			"length": 64,
+			"default_value" : "Unknown",
+			"nvramName" : "hotspot_3gpplist"
+			
+		}
+	}
+}

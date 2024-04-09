@@ -1,0 +1,157 @@
+{
+	"cgiName" : "test",
+	"get": {
+		"test1":{
+			"type" : "string",
+			"length": 64,
+			"nvramName" : "nvram_test1"
+			
+		},
+		"test2":{
+			"type": "number",
+			"nvramName" : "nvram_test2"
+			
+		},
+		"test3":{
+			"type": "boolean",
+			"nvramName" : "nvram_test3"
+			
+		},
+		"test_array":{
+			"type": "array",
+			"nvram_prefix" : "test_arr",
+			"length" : 10,
+			"item" : [
+				{
+					"name": "Enable",
+					"type": "boolean"
+					
+				},
+				{
+					"name": "id",
+					"type": "number"
+					
+				},
+				{
+					"name": "name",
+					"type": "string",
+					"length": 64
+					
+				},
+				{
+					"name": "ip",
+					"type": "string",
+					"length" : 64
+					
+				},
+				{
+					"name": "mac",
+					"type": "string" ,
+					"length": 64
+					
+				}
+			
+			]
+		},
+		"test4" : {
+			"type" :"float",
+			"nvramName" : "nvram_test4"
+
+		}
+	},
+	"set":{
+		"test1":{
+			"type" : "string",
+			"length": 64,
+			"nvramName" : "nvram_test1",
+			"default_value" : "nvram_test1"
+			
+		},
+		"test2":{
+			"type": "number",
+			"nvramName" : "nvram_test2",
+			"default_value" : 1
+		},
+		"test3":{
+			"type": "boolean",
+			"nvramName" : "nvram_test3",
+			"default_value" : true
+		},
+		"test_array":{
+			"type": "array",
+			"nvram_prefix" : "test_arr",
+			"length" : 10,
+			"item" : [
+				{
+					"name": "Enable",
+					"type": "boolean",
+					"nvramName": "test_arr_Enable"			
+				},
+				{
+					"name": "id",
+					"type": "number",
+					"nvramName": "test_arr_id"			
+					
+				},
+				{
+					"name": "name",
+					"type": "string",
+					"nvramName": "test_arr_name",			
+					"length": 64
+					
+				},
+				{
+					"name": "ip",
+					"nvramName": "test_arr_ip",			
+					"type": "string",
+					"length": 64
+					
+				},
+				{
+					"name": "mac",
+					"nvramName": "test_arr_mac",			
+					"type": "string",
+					"length":64
+					
+				}
+			
+			],
+			"default_value" :[
+				{
+					"Enable" : true,
+					"id" : 1,
+					"name" : "name1",
+					"ip" : "192.168.1.1",
+					"mac": "12:32:34:56:78:91"
+				},
+				{
+					"Enable" : true,
+					"id" : 2,
+					"name" : "name2",
+					"ip" : "192.168.1.2",
+					"mac": "12:32:34:56:78:92"
+				},
+				{
+					"Enable" : true,
+					"id" : 3,
+					"name" : "name3",
+					"ip" : "192.168.1.3",
+					"mac": "12:32:34:56:78:93"
+				},
+				{
+					"Enable" : true,
+					"id" : 4,
+					"name" : "name4",
+					"ip" : "192.168.1.4",
+					"mac": "12:32:34:56:78:94"
+				}
+			]
+		},
+		"test4" : {
+			"type" :"float",
+			"nvramName" : "nvram_test4",
+			"default_value" : 3.1415
+
+		}
+	}
+}
